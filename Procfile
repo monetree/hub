@@ -1,1 +1,1 @@
-web: gunicorn jiroku.wsgi --log-file -
+web: gunicorn jiroku.settings --log-file -
