@@ -41,10 +41,6 @@ def get_fibonacci(request):
         return render(request, 'index.html')
 
 
-def get_results_api(request):
-    res = list(FibonacciModel.objects.values())
-    return JsonResponse(res, safe=False)
-
 
 def get_results(request):
     res = FibonacciModel.objects.all()
@@ -53,3 +49,14 @@ def get_results(request):
     }
 
     return render(request, 'table.html', context)
+
+def get_results_api(request):
+    num = int(request.GET.get('number'))
+    if num is not None:
+        return JsonResponse({"code":400, "msg":"number can't be empty !"})
+        try:
+            obj = FibonacciModel.objects.create(num=num, res=res)
+        except OverflowError:
+            return JsonResponse({"code":400, "msg":"fibonacci number is too big to store in database"})
+    res = list(FibonacciModel.objects.values())
+    return JsonResponse(res, safe=False)

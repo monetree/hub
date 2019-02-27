@@ -10,8 +10,9 @@ Steps to run application locally:
 
 
 
-Url env points.
+Url end points.
 
 
 visit http://127.0.0.1:8000 for Ui to share input in POST method
-visit http://127.0.0.1:8000/api/ - to get all fibonacci datas from database.
+visit http://127.0.0.1:8000/api/ - to get all fibonacci datas from database in json api.
+visit http://127.0.0.1:8000/table/ - to get all fibonacci datas from database in Ui - table.
