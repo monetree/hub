@@ -8,18 +8,19 @@ sys.setrecursionlimit(15000)
 
 cache = {}
 
+def fibonacci(n):
+    if n in cache:
+        return cache[n]
+    elif n == 0:
+        return 0
+    elif n == 1 or n == 2:
+        return 1
+    else:
+        result = fibonacci(n-1) + fibonacci(n-2)
+        cache[n] = result
+        return result
+
 class FibonacciCalculation:
-    def fibonacci(n):
-        if n in cache:
-            return cache[n]
-        elif n == 0:
-            return 0
-        elif n == 1 or n == 2:
-            return 1
-        else:
-            result = fibonacci(n-1) + fibonacci(n-2)
-            cache[n] = result
-            return result
 
     def get_fibonacci(request):
         if request.method == "POST":
@@ -48,7 +49,7 @@ class FibonacciCalculation:
     def get_results_api(request):
         num = request.GET.get('number', None)
         if num is not None:
-            output = self.fibonacci(int(num))
+            output = fibonacci(int(num))
             try:
                 obj = FibonacciModel.objects.create(num=num, res=output)
             except OverflowError:
