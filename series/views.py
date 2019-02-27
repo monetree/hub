@@ -48,7 +48,7 @@ class FibonacciCalculation:
     def get_results_api(request):
         num = request.GET.get('number', None)
         if num is not None:
-            output = fibonacci(int(num))
+            output = self.fibonacci(int(num))
             try:
                 obj = FibonacciModel.objects.create(num=num, res=output)
             except OverflowError:
