@@ -70,6 +70,13 @@ DATABASES = {
 }
 
 
+import dj_databse_url
+db_from_env = dj_databse_url.config()
+DATABSES['default'].update(db_from_env)
+DATABSES['default']['CONN_MAX_AGE'] = 500
+
+
+
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
