@@ -41,6 +41,15 @@ def get_fibonacci(request):
         return render(request, 'index.html')
 
 
-def get_results(request):
+def get_results_api(request):
     res = list(FibonacciModel.objects.values())
     return JsonResponse(res, safe=False)
+
+
+def get_results(request):
+    res = FibonacciModel.objects.all()
+    context = {
+        "data": res
+    }
+
+    return render(request, 'table.html', context)
