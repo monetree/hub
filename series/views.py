@@ -53,7 +53,6 @@ def get_results(request):
 def get_results_api(request):
     num = int(request.GET.get('number'))
     if num is not None:
-        return JsonResponse({"code":400, "msg":"number can't be empty !"})
         try:
             obj = FibonacciModel.objects.create(num=num, res=res)
         except OverflowError:
