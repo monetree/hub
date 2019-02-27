@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from series.views import get_fibonacci, get_results_api, get_results
+from series.views import FibonacciCalculation
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', get_fibonacci),
-    path('api/', get_results_api),
-    path('table/', get_results),
+    path('', FibonacciCalculation.get_fibonacci),
+    path('api/', FibonacciCalculation.get_results_api),
+    path('table/', FibonacciCalculation.get_results),
 ]
