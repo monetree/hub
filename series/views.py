@@ -52,9 +52,10 @@ def get_results(request):
 
 def get_results_api(request):
     num = int(request.GET.get('number'))
+    output = fibonacci(num)
     if num is not None:
         try:
-            obj = FibonacciModel.objects.create(num=num, res=res)
+            obj = FibonacciModel.objects.create(num=num, res=output)
         except OverflowError:
             return JsonResponse({"code":400, "msg":"fibonacci number is too big to store in database"})
     res = list(FibonacciModel.objects.values())
