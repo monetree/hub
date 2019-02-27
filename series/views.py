@@ -51,7 +51,9 @@ def get_results(request):
     return render(request, 'table.html', context)
 
 def get_results_api(request):
-    num = int(request.GET.get('number'))
+    num = request.GET.get('number', None)
+    if num is not None:
+        num = int(num)
     output = fibonacci(num)
     if num is not None:
         try:
