@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models import FibonacciModel
+from django.db import DataError
+
 
 # extend the recursive time limit
 import sys
