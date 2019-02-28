@@ -35,6 +35,10 @@ class FibonacciCalculation:
                 context = {
                     "msg": "fibonacci number is too big to store in database"
                 }
+            except DataError:
+                context = {
+                    "msg": "fibonacci number is too big to store in database"
+                }
             return render(request, 'index.html',context)
         else:
             return render(request, 'index.html')
@@ -53,6 +57,8 @@ class FibonacciCalculation:
             try:
                 obj = FibonacciModel.objects.create(num=num, res=output)
             except OverflowError:
+                return JsonResponse({"code":400, "msg":"fibonacci number is too big to store in database"})
+            except DataError:
                 return JsonResponse({"code":400, "msg":"fibonacci number is too big to store in database"})
         res = list(FibonacciModel.objects.values())
         return JsonResponse(res, safe=False)

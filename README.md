@@ -17,7 +17,6 @@ Steps to run application locally:
 7. python manage.py runserver
 
 
-
 Url end points.
 
 
@@ -25,6 +24,7 @@ Url end points.
     visit http://127.0.0.1:8000/api/ - to get all fibonacci datas from database in json api.
     visit http://127.0.0.1:8000/api/?number=6 - can also create fibonacci using query params.
     visit http://127.0.0.1:8000/table/ - to get all fibonacci datas from database in Ui - table.
+
 
 
 
